@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const CategoriesBlock = styled.div`
     display: flex;
@@ -21,6 +21,15 @@ const CategoryBlock = styled.div`
     &:hover {
         color: green;
     }
+
+    ${props => props.active && css`
+        font-weight: 600;
+        border-bottom: 2px solid #22b8cf;
+        color: 22b8cf;
+        &:hover {
+            color: #3bc9db;
+        }
+    `}
 
     & + & {
         margin-left: 1rem;
@@ -59,11 +68,11 @@ const category_list = [
 ]
 
 
-const Categories = () => {
+const Categories = ({category, onSelect}) => {
     return (
         <CategoriesBlock>
-            {category_list.map(category => (
-                <CategoryBlock key={category.name}>{category.name}</CategoryBlock>
+            {category_list.map(c => (
+                <CategoryBlock key={c.name} active={category === c.name} onClick={() => onSelect(c.name)}>{c.name}</CategoryBlock>
             ))}
         </CategoriesBlock>
     )
