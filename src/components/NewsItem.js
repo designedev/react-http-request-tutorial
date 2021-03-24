@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const NewsItemBlock = styled.div`
     display: flex;
+    margin: 30px;
 
     .thumbnail {
         margin-right: 1rem;
@@ -10,6 +11,21 @@ const NewsItemBlock = styled.div`
             width: 160px;
             height: 100px;
             object-fit: cover;
+        }
+    }
+
+    .contents {
+        h2 {
+            margin: 0;
+            a {
+                color: black;
+            }
+        }
+        p {
+            margin: 0;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+            white-space: normal;
         }
     }
 `
@@ -25,7 +41,7 @@ const NewsItem = ({article}) => {
                     </a>
                 </div>
             )}
-            <div>
+            <div className="contents">
                 <h2>
                     <a href={url} target="_blank" rel="noreferrer">
                         {title}
